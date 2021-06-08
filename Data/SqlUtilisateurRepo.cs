@@ -19,35 +19,25 @@ namespace RSEBack.data {
             return (_context.SaveChanges() >= 0);
         }
 
-        public IEnumerable<Utilisateur> GetAllUtilisateur()
-        {
-            return _context.Utilisateurs.ToList();
-        }
-
         public Utilisateur GetUtilisateurById(int id)
         {
             return _context.Utilisateurs.FirstOrDefault(p => p.Id == id);
         }
 
-        public void CreateUtilisateur(Utilisateur Utilisateur)
+        public IEnumerable<Utilisateur> GetAllUtilisateur()
         {
-            if(Utilisateur == null){
-                throw new ArgumentNullException(nameof(Utilisateur));
-            }
-            _context.Utilisateurs.Add(Utilisateur);
+            return _context.Utilisateurs.Where(p => p.Role == 1).ToList(); //liste des employés
+        }
+
+        public IEnumerable<Utilisateur> GetAllUtilisateurEquipeRSE()
+        {
+            return _context.Utilisateurs.Where(p => p.Role == 1 && p.MembreEquipeRSE == true).ToList(); // Les membres de l'équipe RSE
         }
 
         public void UpdateUtilisateur(Utilisateur Utilisateur)
         {
-            
-        }
-
-        public void DeleteUtilisateur(Utilisateur Utilisateur)
-        {
-            if(Utilisateur == null){
-                throw new ArgumentNullException(nameof(Utilisateur));
-            }
-            _context.Utilisateurs.Remove(Utilisateur);
+            if(Utilisateur.Role == 0) Utilisateur.Role = 1;
+            else Utilisateur.Role = 0;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace RSEBack.data {
             if(utilisateur == null){
                 throw new ArgumentNullException(nameof(utilisateur));
             }
-            if(utilisateur.Role == 1) //admin
+            if(utilisateur.Role == 0) //admin
                 return _context.Suggestions.ToList(); // Si admin, on retourne tous les suggestions
             else
                 return utilisateur.Suggestions.ToList(); // on retourne que les suggestions de l'employé

@@ -21,58 +21,32 @@ namespace RSEBack.Controllers
             _mapper = mapper;
         }
 
-        // Get api/Utilisateur
+        // Get api/utilisateur
         [HttpGet]
-        public ActionResult <IEnumerable<UtilisateurReadDto>> GetAllUtilisateurs()
+        public ActionResult <IEnumerable<UtilisateurReadDto>> GetAllUtilisateurs() // retourner les employés
         {
             var UtilisateurItems = _repository.GetAllUtilisateur();
             return  Ok(_mapper.Map<IEnumerable<UtilisateurReadDto>>(UtilisateurItems));
         }
 
-        // Get api/Utilisateur/{id}
-        [HttpGet("{id}", Name ="GetUtilisateurById")]
-        public ActionResult <UtilisateurReadDto> GetUtilisateurById(int id)
+        // Get api/Utilisateur/equipeRSE
+        [HttpGet("equipeRSE")]
+        public ActionResult <UtilisateurReadDto> GetAllUtilisateurEquipeRSE() // membres d'equipe RSE
         {
-            var UtilisateurItem = _repository.GetUtilisateurById(id);
-            if(UtilisateurItem != null) return Ok(_mapper.Map<UtilisateurReadDto>(UtilisateurItem));
-            else return NotFound();
+            var UtilisateurItems = _repository.GetAllUtilisateurEquipeRSE();
+            return Ok(_mapper.Map<IEnumerable<UtilisateurEquipeRSEReadDto>>(UtilisateurItems));
         }
 
-        // Post api/utilisateur
-        [HttpPost]
-        public ActionResult <Utilisateur> CreateUtilisateur(Utilisateur UtilisateurCreateDto)
-        {
-            Utilisateur UtilisateurModel = _mapper.Map<Utilisateur>(UtilisateurCreateDto);
-            _repository.CreateUtilisateur(UtilisateurModel);
-            _repository.SaveChanges();
-            UtilisateurReadDto UtilisateurReadDto = _mapper.Map<UtilisateurReadDto>(UtilisateurModel);
-            return CreatedAtRoute(nameof(GetUtilisateurById), new {Id = UtilisateurReadDto.Id}, UtilisateurReadDto);
-        }
-
-        // Put api/Utilisateur/{id}
-        [HttpPut("{id}")]
-        public ActionResult UpdateUtilisateur(int id, UtilisateurUpdateDto UtilisateurUpdateDto){
-            Utilisateur UtilisateurModel = _repository.GetUtilisateurById(id);
+        // Put api/utilisateur/equipeRSE/{id}
+        [HttpPut("equipeRSE/{id}")]
+        public ActionResult UpdateUtilisateur(int idUtilisateur){
+            Utilisateur UtilisateurModel = _repository.GetUtilisateurById(idUtilisateur);
             if(UtilisateurModel == null){
                 return NotFound();
             }
-            _mapper.Map(UtilisateurUpdateDto, UtilisateurModel);
             _repository.UpdateUtilisateur(UtilisateurModel);
             _repository.SaveChanges();
-            return NoContent();
-        }
-
-        // Delete api/Utilisateur/{id}
-        [HttpDelete("{id}")]
-        public ActionResult DeleteUtilisateur(int id){
-            
-            Utilisateur UtilisateurModel = _repository.GetUtilisateurById(id);
-            if(UtilisateurModel == null){
-                return NotFound();
-            }
-            _repository.DeleteUtilisateur(UtilisateurModel);
-            _repository.SaveChanges();
-            return NoContent();
+            return Ok(_mapper.Map<UtilisateurReadDto>(UtilisateurModel));
         }
     }
 }

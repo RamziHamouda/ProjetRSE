@@ -7,8 +7,7 @@ namespace RSEBack.Data{
         bool SaveChanges();
         IEnumerable<Utilisateur> GetAllUtilisateur();
         Utilisateur GetUtilisateurById(int id);
-        void CreateUtilisateur(Utilisateur utilisateur);
         void UpdateUtilisateur(Utilisateur utilisateur);
-        void DeleteUtilisateur(Utilisateur utilisateur);
+        IEnumerable<Utilisateur> GetAllUtilisateurEquipeRSE();
     }
 }
