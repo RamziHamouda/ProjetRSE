@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qtgOFqAyu+PVCkD6d90Mwrkc0Nn9zXOUgaPXgKaTlfltr7PG2AchrjNema2eLhnCq/LNgoehuvBKFUe9Kq7CCg==",
+  "dgSpecHash": "gw90L31Yoms60wQeQqtdngiBxETffxDTDMKq7ngPxl6EYf6L3jeo+/ipvyoba5C/GB5r0oGENJFpz84SUvKWsA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\RAMZI\\Desktop\\Freelance\\RSEBack\\RSEBack.csproj",
+  "projectFilePath": "C:\\Users\\RAMZI\\Desktop\\Freelance\\ProjetRSE\\RSEBack.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\RAMZI\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\RAMZI\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

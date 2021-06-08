@@ -19,14 +19,21 @@ namespace RSEBack.data {
             return (_context.SaveChanges() >= 0);
         }
 
-        public IEnumerable<Suggestion> GetAllSuggestion()
-        {
-            return _context.Suggestions.ToList();
-        }
-
         public Suggestion GetSuggestionById(int id)
         {
             return _context.Suggestions.FirstOrDefault(p => p.Id == id);
+        }
+
+        public IEnumerable<Suggestion> GetAllSuggestion(int idUtilisateur)
+        {
+            Utilisateur utilisateur = _context.Utilisateurs.FirstOrDefault(p => p.Id == idUtilisateur);
+            if(utilisateur == null){
+                throw new ArgumentNullException(nameof(utilisateur));
+            }
+            if(utilisateur.Role == 1) //admin
+                return _context.Suggestions.ToList(); // Si admin, on retourne tous les suggestions
+            else
+                return utilisateur.Suggestions.ToList(); // on retourne que les suggestions de l'employé
         }
 
         public void CreateSuggestion(Suggestion Suggestion)
@@ -34,12 +41,8 @@ namespace RSEBack.data {
             if(Suggestion == null){
                 throw new ArgumentNullException(nameof(Suggestion));
             }
+            Suggestion.DateCreation = DateTime.Now;
             _context.Suggestions.Add(Suggestion);
-        }
-
-        public void UpdateSuggestion(Suggestion Suggestion)
-        {
-            
         }
 
         public void DeleteSuggestion(Suggestion Suggestion)

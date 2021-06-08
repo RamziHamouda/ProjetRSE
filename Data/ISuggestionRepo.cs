@@ -5,10 +5,9 @@ namespace RSEBack.Data{
     public interface ISuggestionRepo{
 
         bool SaveChanges();
-        IEnumerable<Suggestion> GetAllSuggestion();
+        IEnumerable<Suggestion> GetAllSuggestion(int idUtilisateur);
         Suggestion GetSuggestionById(int id);
         void CreateSuggestion(Suggestion Suggestion);
-        void UpdateSuggestion(Suggestion Suggestion);
         void DeleteSuggestion(Suggestion Suggestion);
     }
 }

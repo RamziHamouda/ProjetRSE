@@ -59,7 +59,7 @@ namespace RSEBack.Controllers
             _mapper.Map(ActualiteUpdateDto, ActualiteModel);
             _repository.UpdateActualite(ActualiteModel);
             _repository.SaveChanges();
-            return NoContent();
+            return Ok(_mapper.Map<ActualiteReadDto>(ActualiteModel));
         }
 
         // Delete api/actualite/{id}
@@ -72,8 +72,7 @@ namespace RSEBack.Controllers
             }
             _repository.DeleteActualite(ActualiteModel);
             _repository.SaveChanges();
-            return NoContent();
-
+            return Ok(_mapper.Map<ActualiteReadDto>(ActualiteModel));
         }
     }
 }

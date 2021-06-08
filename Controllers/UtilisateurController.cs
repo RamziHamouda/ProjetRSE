@@ -73,7 +73,6 @@ namespace RSEBack.Controllers
             _repository.DeleteUtilisateur(UtilisateurModel);
             _repository.SaveChanges();
             return NoContent();
-
         }
     }
 }

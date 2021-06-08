@@ -34,16 +34,13 @@ namespace RSEBack.data {
             if(actualite == null){
                 throw new ArgumentNullException(nameof(actualite));
             }
+            actualite.DateCreation = DateTime.Now;
             _context.Actualites.Add(actualite);
         }
 
         public void UpdateActualite(Actualite actualite)
         {
-            Actualite actualiteItem = _context.Actualites.Where(p => p.Id == actualite.Id).FirstOrDefault();
-            actualiteItem.Titre = actualite.Titre;
-            actualiteItem.Image = actualite.Image;
-            actualiteItem.DateCreation = actualite.DateCreation;
-            actualiteItem.Description = actualite.Description;
+            actualite.DateCreation = DateTime.Now;
         }
 
         public void DeleteActualite(Actualite actualite)

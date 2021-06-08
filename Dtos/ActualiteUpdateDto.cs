@@ -9,7 +9,5 @@ namespace RSEBack.Models{
         public string Description {get; set;}
         [Required]
         public string Image {get; set;}
-        [Required]
-        public DateTime DateCreation {get; set;}
     }
 }

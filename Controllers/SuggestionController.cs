@@ -22,18 +22,18 @@ namespace RSEBack.Controllers
         }
 
         // Get api/suggestion
-        [HttpGet]
-        public ActionResult <IEnumerable<SuggestionReadDto>> GetAllSuggestions()
+        [HttpGet("{idUtilisateur}")]
+        public ActionResult <IEnumerable<SuggestionReadDto>> GetAllSuggestions(int idUtilisateur)
         {
-            var SuggestionItems = _repository.GetAllSuggestion();
+            var SuggestionItems = _repository.GetAllSuggestion(idUtilisateur);
             return  Ok(_mapper.Map<IEnumerable<SuggestionReadDto>>(SuggestionItems));
         }
 
-        // Get api/suggestion/{id}
-        [HttpGet("{id}", Name ="GetSuggestionById")]
-        public ActionResult <SuggestionReadDto> GetSuggestionById(int id)
+        // Get api/suggestion/unique/id
+        [HttpGet("unique/{id}", Name ="GetSuggestionById")]
+        public ActionResult <SuggestionReadDto> GetSuggestionById(int idSuggestion)
         {
-            var SuggestionItem = _repository.GetSuggestionById(id);
+            var SuggestionItem = _repository.GetSuggestionById(idSuggestion);
             if(SuggestionItem != null) return Ok(_mapper.Map<SuggestionReadDto>(SuggestionItem));
             else return NotFound();
         }
@@ -49,19 +49,6 @@ namespace RSEBack.Controllers
             return CreatedAtRoute(nameof(GetSuggestionById), new {Id = SuggestionReadDto.Id}, SuggestionReadDto);
         }
 
-        // Put api/suggestion/{id}
-        [HttpPut("{id}")]
-        public ActionResult UpdateSuggestion(int id, SuggestionUpdateDto SuggestionUpdateDto){
-            Suggestion SuggestionModel = _repository.GetSuggestionById(id);
-            if(SuggestionModel == null){
-                return NotFound();
-            }
-            _mapper.Map(SuggestionUpdateDto, SuggestionModel);
-            _repository.UpdateSuggestion(SuggestionModel);
-            _repository.SaveChanges();
-            return NoContent();
-        }
-
         // Delete api/suggestion/{id}
         [HttpDelete("{id}")]
         public ActionResult DeleteSuggestion(int id){
@@ -72,7 +59,7 @@ namespace RSEBack.Controllers
             }
             _repository.DeleteSuggestion(SuggestionModel);
             _repository.SaveChanges();
-            return NoContent();
+            return Ok(_mapper.Map<SuggestionReadDto>(SuggestionModel));
 
         }
     }

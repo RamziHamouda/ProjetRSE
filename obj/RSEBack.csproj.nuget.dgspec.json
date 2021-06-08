@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\RAMZI\\Desktop\\Freelance\\RSEBack\\RSEBack.csproj": {}
+    "C:\\Users\\RAMZI\\Desktop\\Freelance\\ProjetRSE\\RSEBack.csproj": {}
   },
   "projects": {
-    "C:\\Users\\RAMZI\\Desktop\\Freelance\\RSEBack\\RSEBack.csproj": {
+    "C:\\Users\\RAMZI\\Desktop\\Freelance\\ProjetRSE\\RSEBack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\RAMZI\\Desktop\\Freelance\\RSEBack\\RSEBack.csproj",
+        "projectUniqueName": "C:\\Users\\RAMZI\\Desktop\\Freelance\\ProjetRSE\\RSEBack.csproj",
         "projectName": "RSEBack",
-        "projectPath": "C:\\Users\\RAMZI\\Desktop\\Freelance\\RSEBack\\RSEBack.csproj",
+        "projectPath": "C:\\Users\\RAMZI\\Desktop\\Freelance\\ProjetRSE\\RSEBack.csproj",
         "packagesPath": "C:\\Users\\RAMZI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\RAMZI\\Desktop\\Freelance\\RSEBack\\obj\\",
+        "outputPath": "C:\\Users\\RAMZI\\Desktop\\Freelance\\ProjetRSE\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
