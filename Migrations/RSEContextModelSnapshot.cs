@@ -53,6 +53,9 @@ namespace RSEBack.Migrations
                     b.Property<bool>("Aime")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Commentaire")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<float>("Dons")
                         .HasColumnType("real");
 
@@ -189,7 +192,7 @@ namespace RSEBack.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateDeNaissance")
+                    b.Property<DateTime>("DateNaissance")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")

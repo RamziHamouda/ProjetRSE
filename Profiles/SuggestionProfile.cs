@@ -9,7 +9,6 @@ namespace rseback.profiles{
         {
             CreateMap<Suggestion, SuggestionReadDto>();
             CreateMap<SuggestionCreateDto, Suggestion>();
-            CreateMap<SuggestionUpdateDto, Suggestion>();
         }
     }
 }

@@ -71,7 +71,7 @@ namespace RSEBack.Migrations
                     PhotoProfil = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MotDePasse = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Profession = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateDeNaissance = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateNaissance = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MembreEquipeRSE = table.Column<bool>(type: "bit", nullable: false),
                     Role = table.Column<int>(type: "int", nullable: false)
@@ -117,6 +117,7 @@ namespace RSEBack.Migrations
                     Dons = table.Column<float>(type: "real", nullable: false),
                     HeureTravail = table.Column<float>(type: "real", nullable: false),
                     Aime = table.Column<bool>(type: "bit", nullable: false),
+                    Commentaire = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IdProjet = table.Column<int>(type: "int", nullable: false),
                     IdUtilisateur = table.Column<int>(type: "int", nullable: false)
                 },

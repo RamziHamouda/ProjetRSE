@@ -8,8 +8,7 @@ namespace rseback.profiles{
         public UtilisateurProfile()
         {
             CreateMap<Utilisateur, UtilisateurReadDto>();
-            CreateMap<UtilisateurCreateDto, Utilisateur>();
-            CreateMap<UtilisateurUpdateDto, Utilisateur>();
+            CreateMap<Utilisateur, UtilisateurEquipeRSEReadDto>();
         }
     }
 }

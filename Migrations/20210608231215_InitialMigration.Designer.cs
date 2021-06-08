@@ -10,7 +10,7 @@ using RSEBack.data;
 namespace RSEBack.Migrations
 {
     [DbContext(typeof(RSEContext))]
-    [Migration("20210607221514_InitialMigration")]
+    [Migration("20210608231215_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,9 @@ namespace RSEBack.Migrations
 
                     b.Property<bool>("Aime")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Commentaire")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Dons")
                         .HasColumnType("real");
@@ -191,7 +194,7 @@ namespace RSEBack.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateDeNaissance")
+                    b.Property<DateTime>("DateNaissance")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
