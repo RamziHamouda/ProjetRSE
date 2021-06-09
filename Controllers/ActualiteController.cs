@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using RSEBack.Data;
 using RSEBack.Models;
+using RSEBack.Dtos;
 
 namespace RSEBack.Controllers
 {
@@ -35,7 +36,6 @@ namespace RSEBack.Controllers
         {
             var ActualiteItem = _repository.GetActualiteById(id);
             if(ActualiteItem != null) return Ok(_mapper.Map<ActualiteReadDto>(ActualiteItem));
-            //if(ActualiteItem != null) return Ok(_mapper.Map<ActualiteReadDto>(ActualiteItem));
             else return NotFound();
         }
 

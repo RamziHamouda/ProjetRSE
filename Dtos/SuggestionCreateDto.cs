@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RSEBack.Models{
+namespace RSEBack.Dtos{
     public class SuggestionCreateDto {
         [Required]
         public string Sujet {get; set;}

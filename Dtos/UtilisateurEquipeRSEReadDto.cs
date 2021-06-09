@@ -1,6 +1,6 @@
 using System;
 
-namespace RSEBack.Models{
+namespace RSEBack.Dtos{
     public class UtilisateurEquipeRSEReadDto{
         public string Nom {get; set;}
         public string Prenom {get; set;}

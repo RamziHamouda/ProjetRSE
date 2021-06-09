@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace RSEBack.Models{
+namespace RSEBack.Dtos{
     public class ActualiteCreateDto{
         [Required]
         public string Titre {get; set;}

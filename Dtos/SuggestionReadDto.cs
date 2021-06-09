@@ -1,6 +1,6 @@
 using System;
 
-namespace RSEBack.Models{
+namespace RSEBack.Dtos{
     public class SuggestionReadDto {
         public int Id {get; set;}
         public string Sujet {get; set;}

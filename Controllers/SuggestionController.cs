@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using RSEBack.Data;
 using RSEBack.Models;
+using RSEBack.Dtos;
 
 namespace RSEBack.Controllers
 {
@@ -30,7 +31,7 @@ namespace RSEBack.Controllers
         }
 
         // Get api/suggestion/unique/id
-        [HttpGet("unique/{id}", Name ="GetSuggestionById")]
+        [HttpGet("unique/{idSuggestion}", Name ="GetSuggestionById")]
         public ActionResult <SuggestionReadDto> GetSuggestionById(int idSuggestion)
         {
             var SuggestionItem = _repository.GetSuggestionById(idSuggestion);

@@ -1,4 +1,5 @@
 using AutoMapper;
+using RSEBack.Dtos;
 using RSEBack.Models;
 
 namespace rseback.profiles{

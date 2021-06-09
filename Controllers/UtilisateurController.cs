@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using RSEBack.Data;
 using RSEBack.Models;
+using RSEBack.Dtos;
 
 namespace RSEBack.Controllers
 {
