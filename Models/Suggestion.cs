@@ -11,6 +11,6 @@ namespace RSEBack.Models{
         public DateTime DateCreation {get; set;}
         [ForeignKey("Utilisateur")]
         public int IdUtilisateur { get; set; }
-        public Utilisateur Utilisateur { get; set; }
+        public virtual Utilisateur Utilisateur { get; set; }
     }
 }

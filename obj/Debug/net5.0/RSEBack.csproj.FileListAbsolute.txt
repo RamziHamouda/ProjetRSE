@@ -126,3 +126,5 @@ C:\Users\RAMZI\Desktop\Freelance\ProjetRSE\obj\Debug\net5.0\RSEBack.dll
 C:\Users\RAMZI\Desktop\Freelance\ProjetRSE\obj\Debug\net5.0\ref\RSEBack.dll
 C:\Users\RAMZI\Desktop\Freelance\ProjetRSE\obj\Debug\net5.0\RSEBack.pdb
 C:\Users\RAMZI\Desktop\Freelance\ProjetRSE\obj\Debug\net5.0\RSEBack.genruntimeconfig.cache
+C:\Users\RAMZI\Desktop\Freelance\ProjetRSE\bin\Debug\net5.0\Castle.Core.dll
+C:\Users\RAMZI\Desktop\Freelance\ProjetRSE\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll

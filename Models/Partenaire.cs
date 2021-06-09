@@ -9,6 +9,6 @@ namespace RSEBack.Models{
         public string Nom {get; set;}
         public string Logo {get; set;}
         public DateTime DateCreation {get; set;}
-        public ICollection<PartenaireProjet> PartenaireProjet { get; set; }
+        public virtual ICollection<PartenaireProjet> PartenaireProjet { get; set; }
     }
 }

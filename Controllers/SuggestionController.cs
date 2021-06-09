@@ -39,11 +39,11 @@ namespace RSEBack.Controllers
         }
 
         // Post api/suggestion
-        [HttpPost]
-        public ActionResult <Suggestion> CreateSuggestion(Suggestion SuggestionCreateDto)
+        [HttpPost("{idUtilisateur}")]
+        public ActionResult <Suggestion> CreateSuggestion(int idUtilisateur, Suggestion SuggestionCreateDto)
         {
             Suggestion SuggestionModel = _mapper.Map<Suggestion>(SuggestionCreateDto);
-            _repository.CreateSuggestion(SuggestionModel);
+            _repository.CreateSuggestion(idUtilisateur, SuggestionModel);
             _repository.SaveChanges();
             SuggestionReadDto SuggestionReadDto = _mapper.Map<SuggestionReadDto>(SuggestionModel);
             return CreatedAtRoute(nameof(GetSuggestionById), new {Id = SuggestionReadDto.Id}, SuggestionReadDto);
@@ -60,7 +60,6 @@ namespace RSEBack.Controllers
             _repository.DeleteSuggestion(SuggestionModel);
             _repository.SaveChanges();
             return Ok(_mapper.Map<SuggestionReadDto>(SuggestionModel));
-
         }
     }
 }

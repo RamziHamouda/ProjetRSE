@@ -15,8 +15,8 @@ namespace RSEBack.Models{
         public string Image4 {get; set;}
         public DateTime DateCreation {get; set;}
 
-        public ICollection<Impact> Impacts { get; set; }
-        public ICollection<PartenaireProjet> PartenaireProjet { get; set; }
+        public virtual ICollection<Impact> Impacts { get; set; }
+        public virtual ICollection<PartenaireProjet> PartenaireProjet { get; set; }
 
     }
 }

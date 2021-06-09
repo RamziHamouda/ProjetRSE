@@ -9,9 +9,9 @@ namespace RSEBack.Models{
         public string DateCreation {get; set;}
         [ForeignKey("Projet")]
         public int IdProjet { get; set; }
-        public Projet Projet { get; set; }
+        public virtual Projet Projet { get; set; }
         [ForeignKey("Partenaire")]
         public int IdPartenaire { get; set; }
-        public Partenaire Partenaire { get; set; }
+        public virtual Partenaire Partenaire { get; set; }
     }
 }

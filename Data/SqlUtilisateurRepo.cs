@@ -36,8 +36,8 @@ namespace RSEBack.data {
 
         public void UpdateUtilisateur(Utilisateur Utilisateur)
         {
-            if(Utilisateur.Role == 0) Utilisateur.Role = 1;
-            else Utilisateur.Role = 0;
+            if(Utilisateur.MembreEquipeRSE == true) Utilisateur.MembreEquipeRSE = false;
+            else Utilisateur.MembreEquipeRSE = true;
         }
     }
 }

@@ -33,14 +33,17 @@ namespace RSEBack.data {
             if(utilisateur.Role == 0) //admin
                 return _context.Suggestions.ToList(); // Si admin, on retourne tous les suggestions
             else
+            {
                 return utilisateur.Suggestions.ToList(); // on retourne que les suggestions de l'employé
+            }
         }
 
-        public void CreateSuggestion(Suggestion Suggestion)
+        public void CreateSuggestion(int idUtilisateur, Suggestion Suggestion)
         {
             if(Suggestion == null){
                 throw new ArgumentNullException(nameof(Suggestion));
             }
+            Suggestion.IdUtilisateur = idUtilisateur;
             Suggestion.DateCreation = DateTime.Now;
             _context.Suggestions.Add(Suggestion);
         }

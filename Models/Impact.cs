@@ -11,11 +11,11 @@ namespace RSEBack.Models{
         public string Commentaire {get; set;}    
         [ForeignKey("Projet")]
         public int IdProjet { get; set; }
-        public Projet Projet { get; set; }
+        public virtual Projet Projet { get; set; }
         
         [ForeignKey("Utilisateur")]
         public int IdUtilisateur { get; set; }
-        public Utilisateur Utilisateur { get; set; }
+        public virtual Utilisateur Utilisateur { get; set; }
 
     }
 }

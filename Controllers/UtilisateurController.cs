@@ -38,7 +38,7 @@ namespace RSEBack.Controllers
         }
 
         // Put api/utilisateur/equipeRSE/{id}
-        [HttpPut("equipeRSE/{id}")]
+        [HttpPut("equipeRSE/{idUtilisateur}")]
         public ActionResult UpdateUtilisateur(int idUtilisateur){
             Utilisateur UtilisateurModel = _repository.GetUtilisateurById(idUtilisateur);
             if(UtilisateurModel == null){

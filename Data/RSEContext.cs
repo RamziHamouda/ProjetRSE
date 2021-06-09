@@ -1,5 +1,6 @@
 using RSEBack.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace RSEBack.data{
 
@@ -9,7 +10,7 @@ namespace RSEBack.data{
 
         }
 
-        public DbSet<Actualite> Actualites {get; set;} 
+        public DbSet<Actualite> Actualites {get; set;}
         public DbSet<Impact> Impacts {get; set;}
         public DbSet<Partenaire> Partenaires {get; set;}
         public DbSet<Projet> Projets {get; set;}

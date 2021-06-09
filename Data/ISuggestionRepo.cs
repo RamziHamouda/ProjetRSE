@@ -7,7 +7,7 @@ namespace RSEBack.Data{
         bool SaveChanges();
         IEnumerable<Suggestion> GetAllSuggestion(int idUtilisateur);
         Suggestion GetSuggestionById(int id);
-        void CreateSuggestion(Suggestion Suggestion);
+        void CreateSuggestion(int idUtilisateur, Suggestion Suggestion);
         void DeleteSuggestion(Suggestion Suggestion);
     }
 }

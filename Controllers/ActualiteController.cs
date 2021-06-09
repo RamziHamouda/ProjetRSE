@@ -35,6 +35,7 @@ namespace RSEBack.Controllers
         {
             var ActualiteItem = _repository.GetActualiteById(id);
             if(ActualiteItem != null) return Ok(_mapper.Map<ActualiteReadDto>(ActualiteItem));
+            //if(ActualiteItem != null) return Ok(_mapper.Map<ActualiteReadDto>(ActualiteItem));
             else return NotFound();
         }
 

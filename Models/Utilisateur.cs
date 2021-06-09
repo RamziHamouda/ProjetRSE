@@ -17,7 +17,7 @@ namespace RSEBack.Models{
         public string Description {get; set;}
         public bool MembreEquipeRSE {get; set;}
         public int Role {get; set;}
-        public ICollection<Suggestion> Suggestions { get; set; }
-        public ICollection<Impact> Impacts { get; set; }
+        public virtual ICollection<Suggestion> Suggestions { get; set; }
+        public virtual ICollection<Impact> Impacts { get; set; }
     }
 }

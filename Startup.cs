@@ -29,7 +29,7 @@ namespace RSEBack
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<RSEContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("RSEConnection")));
+            services.AddDbContext<RSEContext>(opt => opt.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("RSEConnection")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -42,6 +42,9 @@ namespace RSEBack
             // if this changes, all we need to do is swap the second argument out, 
             // the rest of the code stays the same, this is dependency injection
             services.AddScoped<IActualiteRepo, SqlActualiteRepo>();
+
+
+            
             services.AddScoped<IUtilisateurRepo, SqlUtilisateurRepo>();
             services.AddScoped<ISuggestionRepo, SqlSuggestionRepo>();
         }
