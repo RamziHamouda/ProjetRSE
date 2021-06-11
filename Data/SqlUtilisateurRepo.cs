@@ -26,12 +26,12 @@ namespace RSEBack.data {
 
         public IEnumerable<Utilisateur> GetAllUtilisateur()
         {
-            return _context.Utilisateurs.Where(p => p.Role == 1).ToList(); //liste des employés
+            return _context.Utilisateurs.ToList(); //liste des employés
         }
 
         public IEnumerable<Utilisateur> GetAllUtilisateurEquipeRSE()
         {
-            return _context.Utilisateurs.Where(p => p.Role == 1 && p.MembreEquipeRSE == true).ToList(); // Les membres de l'équipe RSE
+            return _context.Utilisateurs.Where(p => p.MembreEquipeRSE == true).ToList(); // Les membres de l'équipe RSE
         }
 
         public void UpdateUtilisateur(Utilisateur Utilisateur)

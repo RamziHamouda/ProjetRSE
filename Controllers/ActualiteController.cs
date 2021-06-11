@@ -57,7 +57,7 @@ namespace RSEBack.Controllers
             if(ActualiteModel == null){
                 return NotFound();
             }
-            _mapper.Map(ActualiteUpdateDto, ActualiteModel);
+            _mapper.Map(ActualiteUpdateDto, ActualiteModel); // faire la mise à jour des données automatiquement 
             _repository.UpdateActualite(ActualiteModel);
             _repository.SaveChanges();
             return Ok(_mapper.Map<ActualiteReadDto>(ActualiteModel));

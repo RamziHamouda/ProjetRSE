@@ -22,7 +22,8 @@ namespace RSEBack.Controllers
             _mapper = mapper;
         }
 
-        // Get api/suggestion
+        // Get api/suggestion 
+        // retourner les suggestions d'un utilisateur particulier
         [HttpGet("{idUtilisateur}")]
         public ActionResult <IEnumerable<SuggestionReadDto>> GetAllSuggestions(int idUtilisateur)
         {
@@ -47,7 +48,7 @@ namespace RSEBack.Controllers
             _repository.CreateSuggestion(idUtilisateur, SuggestionModel);
             _repository.SaveChanges();
             SuggestionReadDto SuggestionReadDto = _mapper.Map<SuggestionReadDto>(SuggestionModel);
-            return CreatedAtRoute(nameof(GetSuggestionById), new {Id = SuggestionReadDto.Id}, SuggestionReadDto);
+            return CreatedAtRoute(nameof(GetSuggestionById), new {idSuggestion = SuggestionReadDto.Id}, SuggestionReadDto);
         }
 
         // Delete api/suggestion/{id}
