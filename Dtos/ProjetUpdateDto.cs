@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace RSEBack.Dtos{
-    public class ProjetReadDto{
+    public class ProjetUpdateDto{
         public int Id {get;set;}
         public string Titre {get; set;}
         public string Description {get; set;}
@@ -12,6 +12,5 @@ namespace RSEBack.Dtos{
         public string Image2 {get; set;}
         public string Image3 {get; set;}
         public string Image4 {get; set;}
-        public DateTime DateCreation {get; set;}
     }
 }

@@ -47,7 +47,7 @@ namespace RSEBack.Controllers
             _repository.CreatePartenaire(PartenaireModel);
             _repository.SaveChanges();
             PartenaireReadDto PartenaireReadDto = _mapper.Map<PartenaireReadDto>(PartenaireModel);
-            return CreatedAtRoute(nameof(GetPartenaireById), new {Id = PartenaireReadDto.Id}, PartenaireReadDto);
+            return CreatedAtRoute(nameof(GetPartenaireById), new {id = PartenaireReadDto.Id}, PartenaireReadDto);
         }
 
         // Put api/partenaire/{id}

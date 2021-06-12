@@ -47,7 +47,7 @@ namespace RSEBack.Controllers
             _repository.CreateActualite(ActualiteModel);
             _repository.SaveChanges();
             ActualiteReadDto ActualiteReadDto = _mapper.Map<ActualiteReadDto>(ActualiteModel);
-            return CreatedAtRoute(nameof(GetActualiteById), new {Id = ActualiteReadDto.Id}, ActualiteReadDto);
+            return CreatedAtRoute(nameof(GetActualiteById), new {id = ActualiteReadDto.Id}, ActualiteReadDto);
         }
 
         // Put api/actualite/{id}
