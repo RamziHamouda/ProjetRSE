@@ -21,7 +21,7 @@ namespace RSEBack.data {
 
         public IEnumerable<Projet> GetProjets(Utilisateur utilisateur)
         {
-            return _context.Projets.Where(i => i.Impacts.Where(i => i.IdUtilisateur == utilisateur.Id).Any());
+            return _context.Projets.Where(i => i.Impacts.Where(i => i.Aime && i.IdUtilisateur == utilisateur.Id).Any());
         }
 
         public void UpdateMotDePasse(int IdUtilisateur, string motDePasse)
@@ -32,7 +32,7 @@ namespace RSEBack.data {
 
         public void UpdateUtilisateur(Utilisateur utilisateur)
         {
-            
+
         }
     }
 }

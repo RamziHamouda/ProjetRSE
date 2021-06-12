@@ -35,32 +35,31 @@ namespace RSEBack.Controllers
             return  Ok(_mapper.Map<IEnumerable<ProjetReadDto>>(ProjetItems));
         }
 
-        /*
+        
         // Put api/profil/changerMotDePasse
         [HttpPut("changerMotDePasse")]
         public ActionResult UpdateMotDePasse(UtilisateurMdpUpdateDto utilisateurMdpUpdateDto){
-            Actualite ActualiteModel = _repository.GetActualiteById(id);
-            if(ActualiteModel == null){
+            Utilisateur UtilisateurModel = _repositoryUtilisateur.GetUtilisateurById(utilisateurMdpUpdateDto.Id);
+            if(UtilisateurModel == null || !UtilisateurModel.Email.Equals(utilisateurMdpUpdateDto.Email)){
                 return NotFound();
             }
-            _mapper.Map(ActualiteUpdateDto, ActualiteModel); // faire la mise à jour des données automatiquement 
-            _repository.UpdateActualite(ActualiteModel);
-            _repository.SaveChanges();
-            return Ok(_mapper.Map<ActualiteReadDto>(ActualiteModel));
+            _repositoryProfil.UpdateMotDePasse(utilisateurMdpUpdateDto.Id, utilisateurMdpUpdateDto.MotDePasse);
+            _repositoryProfil.SaveChanges();
+            return Ok(_mapper.Map<UtilisateurReadDto>(UtilisateurModel));
         }
 
-        // Delete api/actualite/{id}
-        [HttpDelete("{id}")]
-        public ActionResult DeleteActualite(int id){
-            
-            Actualite ActualiteModel = _repository.GetActualiteById(id);
-            if(ActualiteModel == null){
+        // Put api/profil
+        [HttpPut]
+        public ActionResult UpdateProfil(UtilisateurUpdateDto utilisateurUpdateDto){
+            Utilisateur UtilisateurModel = _repositoryUtilisateur.GetUtilisateurById(utilisateurUpdateDto.Id);
+            if(UtilisateurModel == null){
                 return NotFound();
             }
-            _repository.DeleteActualite(ActualiteModel);
-            _repository.SaveChanges();
-            return Ok(_mapper.Map<ActualiteReadDto>(ActualiteModel));
+            _mapper.Map(utilisateurUpdateDto, UtilisateurModel);
+            _repositoryProfil.UpdateUtilisateur(UtilisateurModel);
+            _repositoryProfil.SaveChanges();
+            return Ok(_mapper.Map<UtilisateurReadDto>(UtilisateurModel));
         }
-        */
+
     }
 }

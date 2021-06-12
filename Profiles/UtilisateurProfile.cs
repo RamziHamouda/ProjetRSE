@@ -10,6 +10,7 @@ namespace rseback.profiles{
         {
             CreateMap<Utilisateur, UtilisateurReadDto>();
             CreateMap<Utilisateur, UtilisateurEquipeRSEReadDto>();
+            CreateMap<UtilisateurUpdateDto, Utilisateur>();
         }
     }
 }
