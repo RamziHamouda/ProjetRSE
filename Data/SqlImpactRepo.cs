@@ -19,6 +19,11 @@ namespace RSEBack.data {
             return (_context.SaveChanges() >= 0);
         }
 
+        public Impact GetImpactById(int idImpact)
+        {
+            return _context.Impacts.FirstOrDefault(p => p.IdImpact == idImpact);
+        }
+
         public Impact GetImpact(int idUtilisateur, int idProjet)
         {
             return _context.Impacts.FirstOrDefault(p => p.IdUtilisateur == idUtilisateur && p.IdProjet == idProjet);
@@ -29,7 +34,17 @@ namespace RSEBack.data {
             if(Impact == null){
                 throw new ArgumentNullException(nameof(Impact));
             }
-            _context.Impacts.Add(Impact);
+            // On vérifie si l'impact existe déja dans la base
+            Impact impactBase = _context.Impacts.FirstOrDefault(i => i.IdProjet == Impact.IdProjet && i.IdUtilisateur == Impact.IdUtilisateur);
+            if(impactBase == null)
+            {
+                _context.Impacts.Add(Impact);
+            }
+            else{
+                impactBase.Dons = Impact.Dons;
+                impactBase.Commentaire = Impact.Commentaire;
+                impactBase.HeureTravail = Impact.HeureTravail;
+            }
         }
 
         public void UpdateImpact(Impact Impact)

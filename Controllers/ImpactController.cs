@@ -4,69 +4,88 @@ using AutoMapper;
 using RSEBack.Data;
 using RSEBack.Models;
 using RSEBack.Dtos;
-/*
+
 namespace RSEBack.Controllers
 {
     // api/impact
-    [Route("api/impact")]
+    [Route("api/projet/impact")]
     [ApiController]
     public class ImpactController : ControllerBase
     {
-        private readonly IImpactRepo _repository;
+        private readonly IImpactRepo _repositoryImpact;
+        private readonly IUtilisateurRepo _repositoryUtilisateur;
+        private readonly IProjetRepo _repositoryProjet;
         private readonly IMapper _mapper;
 
         //ctor for dependency injection
-        public ImpactController(IImpactRepo repository, IMapper mapper)
+        public ImpactController(IImpactRepo repositoryImpact, IUtilisateurRepo repositoryUtilisateur, IProjetRepo repositoryProjet, IMapper mapper)
         {
-            _repository = repository;
+            _repositoryImpact = repositoryImpact;
+            _repositoryProjet = repositoryProjet;
+            _repositoryUtilisateur = repositoryUtilisateur;
             _mapper = mapper;
         }
 
-        // Get api/projet/impact/{idUtilisateur}/{idProjet}
-        [HttpGet("{id}", Name ="GetImpactById")]
-        public ActionResult <ImpactReadDto> GetImpact(int idUtilisateur, int idProjet)
+        [HttpGet("{idImpact}", Name ="GetImpactById")]
+        public ActionResult <ImpactReadDto> GetImpactById(int idImpact)
         {
-            var ImpactItem = _repository.GetImpact(id);
+            var ImpactItem = _repositoryImpact.GetImpactById(idImpact);
             if(ImpactItem != null) return Ok(_mapper.Map<ImpactReadDto>(ImpactItem));
             else return NotFound();
         }
 
-        // Post api/Impact
+        // Get api/projet/impact/{idUtilisateur}/{idProjet}
+        [HttpGet("{idUtilisateur}/{idProjet}")]
+        public ActionResult <ImpactReadDto> GetImpact(int idUtilisateur, int idProjet)
+        {
+            Utilisateur utilisateur = _repositoryUtilisateur.GetUtilisateurById(idUtilisateur);
+            Projet projet = _repositoryProjet.GetProjetById(idProjet);
+            if(utilisateur == null || projet == null)
+                return NotFound();
+            Impact ImpactItem = _repositoryImpact.GetImpact(idUtilisateur, idProjet);
+            if(ImpactItem != null) return Ok(_mapper.Map<ImpactReadDto>(ImpactItem));
+            else return NotFound();
+        }
+
+        // Post api/projet/impact
         [HttpPost]
         public ActionResult <Impact> CreateImpact(Impact ImpactCreateDto)
         {
+            Utilisateur utilisateur = _repositoryUtilisateur.GetUtilisateurById(ImpactCreateDto.IdUtilisateur);
+            Projet projet = _repositoryProjet.GetProjetById(ImpactCreateDto.IdProjet);
+            if(utilisateur == null || projet == null)
+                return NotFound();
             Impact ImpactModel = _mapper.Map<Impact>(ImpactCreateDto);
-            _repository.CreateImpact(ImpactModel);
-            _repository.SaveChanges();
+            _repositoryImpact.CreateImpact(ImpactModel);
+            _repositoryImpact.SaveChanges();
             ImpactReadDto ImpactReadDto = _mapper.Map<ImpactReadDto>(ImpactModel);
-            return CreatedAtRoute(nameof(GetImpactById), new {id = ImpactReadDto.Id}, ImpactReadDto);
+            return CreatedAtRoute(nameof(GetImpactById), new {idImpact = ImpactReadDto.IdImpact}, ImpactReadDto);
         }
 
-        // Put api/Impact/{id}
-        [HttpPut("{id}")]
-        public ActionResult UpdateImpact(int id, ImpactUpdateDto ImpactUpdateDto){
-            Impact ImpactModel = _repository.GetImpactById(id);
+        // Put api/projet/impact
+        [HttpPut]
+        public ActionResult UpdateImpact(ImpactUpdateDto ImpactUpdateDto){
+            Impact ImpactModel = _repositoryImpact.GetImpactById(ImpactUpdateDto.IdImpact);
             if(ImpactModel == null){
                 return NotFound();
             }
-            _mapper.Map(ImpactUpdateDto, ImpactModel); // faire la mise à jour des données automatiquement 
-            _repository.UpdateImpact(ImpactModel);
-            _repository.SaveChanges();
+            _mapper.Map(ImpactUpdateDto, ImpactModel); 
+            _repositoryImpact.UpdateImpact(ImpactModel);
+            _repositoryImpact.SaveChanges();
             return Ok(_mapper.Map<ImpactReadDto>(ImpactModel));
         }
 
         // Delete api/Impact/{id}
-        [HttpDelete("{id}")]
-        public ActionResult DeleteImpact(int id){
+        [HttpDelete("{idImpact}")]
+        public ActionResult DeleteImpact(int idImpact){
             
-            Impact ImpactModel = _repository.GetImpactById(id);
+            Impact ImpactModel = _repositoryImpact.GetImpactById(idImpact);
             if(ImpactModel == null){
                 return NotFound();
             }
-            _repository.DeleteImpact(ImpactModel);
-            _repository.SaveChanges();
+            _repositoryImpact.DeleteImpact(ImpactModel);
+            _repositoryImpact.SaveChanges();
             return Ok(_mapper.Map<ImpactReadDto>(ImpactModel));
         }
     }
 }
-*/

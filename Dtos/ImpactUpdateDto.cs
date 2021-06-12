@@ -3,6 +3,8 @@ using System.ComponentModel.DataAnnotations;
 namespace RSEBack.Dtos{
     public class ImpactUpdateDto{
         [Required]
+        public int IdImpact {get; set;}
+        [Required]
         public float Dons {get; set;}
         [Required]
         public float HeureTravail {get; set;}
