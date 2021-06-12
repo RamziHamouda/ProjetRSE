@@ -66,7 +66,7 @@ namespace RSEBack.Controllers
 
         // Put api/projet/{idProjet}
         [HttpPut("{idProjet}")]
-        public ActionResult UpdateAimeProjet(int idProjet, int idUtilisateur){
+        public ActionResult UpdateAimeProjet(int idProjet, [FromBody]int idUtilisateur){
             Projet ProjetModel = _repositoryProjet.GetProjetById(idProjet);
             if(ProjetModel == null){
                 return NotFound();
