@@ -40,10 +40,11 @@ namespace RSEBack.data {
             {
                 _context.Impacts.Add(Impact);
             }
-            else{
+            else {
                 impactBase.Dons = Impact.Dons;
                 impactBase.Commentaire = Impact.Commentaire;
                 impactBase.HeureTravail = Impact.HeureTravail;
+                Impact = impactBase;
             }
         }
 

@@ -14,5 +14,6 @@ namespace RSEBack.Dtos{
         public string Image2 {get; set;}
         public string Image3 {get; set;}
         public string Image4 {get; set;}
+        public int NombreDeVues {get; set;}
     }
 }

@@ -49,7 +49,7 @@ namespace RSEBack.Controllers
 
         // Post api/projet/impact
         [HttpPost]
-        public ActionResult <Impact> CreateImpact(Impact ImpactCreateDto)
+        public ActionResult <Impact> CreateImpact(ImpactCreateDto ImpactCreateDto)
         {
             Utilisateur utilisateur = _repositoryUtilisateur.GetUtilisateurById(ImpactCreateDto.IdUtilisateur);
             Projet projet = _repositoryProjet.GetProjetById(ImpactCreateDto.IdProjet);
@@ -69,6 +69,8 @@ namespace RSEBack.Controllers
             if(ImpactModel == null){
                 return NotFound();
             }
+            if(_repositoryProjet.GetProjetById(ImpactUpdateDto.IdProjet) == null || _repositoryUtilisateur.GetUtilisateurById(ImpactUpdateDto.IdUtilisateur) == null)
+                return NotFound();
             _mapper.Map(ImpactUpdateDto, ImpactModel); 
             _repositoryImpact.UpdateImpact(ImpactModel);
             _repositoryImpact.SaveChanges();

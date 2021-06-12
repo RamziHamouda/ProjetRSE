@@ -44,12 +44,8 @@ namespace RSEBack.data {
         }
 
         // Mise à jour du champs 'aime' de la table Projets
-        public void UpdateAimeProjet(Projet projet, int idUtilisateur)
+        public void UpdateAimeProjet(Projet projet, Utilisateur utilisateur)
         {
-            Utilisateur utilisateur = _context.Utilisateurs.FirstOrDefault(u => u.Id == idUtilisateur);
-            if (utilisateur == null)
-                throw new ArgumentNullException(nameof(utilisateur));
-            
             Impact impact = utilisateur.Impacts.Where(I => I.IdProjet == projet.Id).FirstOrDefault();
             if(impact != null)
             {
