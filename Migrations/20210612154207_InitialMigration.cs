@@ -51,6 +51,7 @@ namespace RSEBack.Migrations
                     Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Image4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NombreDeVues = table.Column<int>(type: "int", nullable: false),
                     DateCreation = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

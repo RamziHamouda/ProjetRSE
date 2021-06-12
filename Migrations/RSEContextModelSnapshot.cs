@@ -151,6 +151,9 @@ namespace RSEBack.Migrations
                     b.Property<string>("Image4")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("NombreDeVues")
+                        .HasColumnType("int");
+
                     b.Property<string>("Titre")
                         .HasColumnType("nvarchar(max)");
 

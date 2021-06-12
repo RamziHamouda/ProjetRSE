@@ -10,7 +10,7 @@ using RSEBack.data;
 namespace RSEBack.Migrations
 {
     [DbContext(typeof(RSEContext))]
-    [Migration("20210608231215_InitialMigration")]
+    [Migration("20210612154207_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -152,6 +152,9 @@ namespace RSEBack.Migrations
 
                     b.Property<string>("Image4")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("NombreDeVues")
+                        .HasColumnType("int");
 
                     b.Property<string>("Titre")
                         .HasColumnType("nvarchar(max)");
