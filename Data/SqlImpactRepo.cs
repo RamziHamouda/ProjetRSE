@@ -24,9 +24,12 @@ namespace RSEBack.data {
             return _context.Impacts.FirstOrDefault(p => p.IdImpact == idImpact);
         }
 
-        public Impact GetImpact(int idUtilisateur, int idProjet)
+        public IEnumerable<Impact> GetImpact(Utilisateur utilisateur, Projet projet)
         {
-            return _context.Impacts.FirstOrDefault(p => p.IdUtilisateur == idUtilisateur && p.IdProjet == idProjet);
+            if(utilisateur.Role == 0) // si admin, on retourne tous le actualités
+                return _context.Impacts;
+            else
+                return _context.Impacts.Where(p => p.IdUtilisateur == utilisateur.Id && p.IdProjet == projet.Id);
         }
 
         public void CreateImpact(Impact Impact)

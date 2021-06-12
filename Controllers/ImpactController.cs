@@ -36,14 +36,14 @@ namespace RSEBack.Controllers
 
         // Get api/projet/impact/{idUtilisateur}/{idProjet}
         [HttpGet("{idUtilisateur}/{idProjet}")]
-        public ActionResult <ImpactReadDto> GetImpact(int idUtilisateur, int idProjet)
+        public ActionResult <IEnumerable<ImpactReadDto>> GetImpact(int idUtilisateur, int idProjet)
         {
             Utilisateur utilisateur = _repositoryUtilisateur.GetUtilisateurById(idUtilisateur);
             Projet projet = _repositoryProjet.GetProjetById(idProjet);
             if(utilisateur == null || projet == null)
                 return NotFound();
-            Impact ImpactItem = _repositoryImpact.GetImpact(idUtilisateur, idProjet);
-            if(ImpactItem != null) return Ok(_mapper.Map<ImpactReadDto>(ImpactItem));
+            IEnumerable<Impact> ListeImpact = _repositoryImpact.GetImpact(utilisateur, projet);
+            if(ListeImpact != null) return Ok(_mapper.Map<IEnumerable<ImpactReadDto>>(ListeImpact));
             else return NotFound();
         }
 

@@ -6,7 +6,7 @@ namespace RSEBack.Data{
 
         bool SaveChanges();
         Impact GetImpactById(int idImpact);
-        Impact GetImpact(int idUtilisateur, int idProjet);
+        IEnumerable<Impact> GetImpact(Utilisateur utilisateur, Projet projet);
         void CreateImpact(Impact Impact);
         void UpdateImpact(Impact Impact);
         void DeleteImpact(Impact Impact);
