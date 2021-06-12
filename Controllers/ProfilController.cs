@@ -25,7 +25,7 @@ namespace RSEBack.Controllers
         }
 
         // Get api/profil/projets/idutilisateur
-        [HttpGet("{idUtilisateur}")]
+        [HttpGet("projets/{idUtilisateur}")]
         public ActionResult <IEnumerable<ProjetReadDto>> GetProjets(int idUtilisateur)
         {
             Utilisateur utilisateur = _repositoryUtilisateur.GetUtilisateurById(idUtilisateur);
@@ -36,29 +36,9 @@ namespace RSEBack.Controllers
         }
 
         /*
-        // Get api/actualite/{id}
-        [HttpGet("{id}", Name ="GetActualiteById")]
-        public ActionResult <ActualiteReadDto> GetActualiteById(int id)
-        {
-            var ActualiteItem = _repository.GetActualiteById(id);
-            if(ActualiteItem != null) return Ok(_mapper.Map<ActualiteReadDto>(ActualiteItem));
-            else return NotFound();
-        }
-
-        // Post api/actualite
-        [HttpPost]
-        public ActionResult <Actualite> CreateActualite(Actualite ActualiteCreateDto)
-        {
-            Actualite ActualiteModel = _mapper.Map<Actualite>(ActualiteCreateDto);
-            _repository.CreateActualite(ActualiteModel);
-            _repository.SaveChanges();
-            ActualiteReadDto ActualiteReadDto = _mapper.Map<ActualiteReadDto>(ActualiteModel);
-            return CreatedAtRoute(nameof(GetActualiteById), new {id = ActualiteReadDto.Id}, ActualiteReadDto);
-        }
-
-        // Put api/actualite/{id}
-        [HttpPut("{id}")]
-        public ActionResult UpdateActualite(int id, ActualiteUpdateDto ActualiteUpdateDto){
+        // Put api/profil/changerMotDePasse
+        [HttpPut("changerMotDePasse")]
+        public ActionResult UpdateMotDePasse(UtilisateurMdpUpdateDto utilisateurMdpUpdateDto){
             Actualite ActualiteModel = _repository.GetActualiteById(id);
             if(ActualiteModel == null){
                 return NotFound();
