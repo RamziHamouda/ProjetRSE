@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using RSEBack.Data;
+using RSEBack.Dtos;
 using RSEBack.Models;
 
 namespace RSEBack.data {
@@ -22,6 +23,19 @@ namespace RSEBack.data {
         public IEnumerable<Projet> GetProjets(Utilisateur utilisateur)
         {
             return _context.Projets.Where(i => i.Impacts.Where(i => i.Aime && i.IdUtilisateur == utilisateur.Id).Any());
+        }
+
+        public ProfilStatistique GetStatistique(Utilisateur utilisateur){
+            ProfilStatistique profilStatistique = new ProfilStatistique();
+            foreach(Impact impact in utilisateur.Impacts){
+                if(impact.Aime)
+                    profilStatistique.NombreAime += 1;
+                if(impact.HeureTravail > 0)
+                    profilStatistique.SommeHeureTravail += impact.HeureTravail;
+                if(impact.Dons > 0)
+                    profilStatistique.SommeDons += impact.Dons;
+            }
+            return profilStatistique;
         }
 
         public void UpdateMotDePasse(int IdUtilisateur, string motDePasse)

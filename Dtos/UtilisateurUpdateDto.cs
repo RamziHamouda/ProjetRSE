@@ -22,9 +22,5 @@ namespace RSEBack.Models{
         public DateTime DateNaissance {get; set;}
         [Required]
         public string Description {get; set;}
-        [Required]
-        public bool MembreEquipeRSE {get; set;}
-        [Required]
-        public int Role {get; set;}
     }
 }

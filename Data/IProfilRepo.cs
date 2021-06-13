@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using RSEBack.Dtos;
 using RSEBack.Models;
 
 namespace RSEBack.Data{
@@ -6,6 +7,7 @@ namespace RSEBack.Data{
 
         bool SaveChanges();
         IEnumerable<Projet> GetProjets(Utilisateur utilisateur);
+        ProfilStatistique GetStatistique(Utilisateur utilisateur);
         void UpdateMotDePasse(int IdUtilisateur, string motDePasse);
         void UpdateUtilisateur(Utilisateur utilisateur);
     }

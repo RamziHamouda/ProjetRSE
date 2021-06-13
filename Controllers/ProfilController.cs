@@ -35,6 +35,17 @@ namespace RSEBack.Controllers
             return  Ok(_mapper.Map<IEnumerable<ProjetReadDto>>(ProjetItems));
         }
 
+        // Get api/profil/statistique/idUtilisateur
+        [HttpGet("statistique/{idUtilisateur}")]
+        public ActionResult <IEnumerable<ProjetReadDto>> GetStatistiqueProfil(int idUtilisateur)
+        {
+            Utilisateur utilisateur = _repositoryUtilisateur.GetUtilisateurById(idUtilisateur);
+            if(utilisateur == null)
+                return NotFound();
+            var StatistiquesProfil = _repositoryProfil.GetStatistique(utilisateur);
+            return  Ok(StatistiquesProfil);
+        }
+
         
         // Put api/profil/changerMotDePasse
         [HttpPut("changerMotDePasse")]
