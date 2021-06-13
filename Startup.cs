@@ -48,6 +48,7 @@ namespace RSEBack
             services.AddScoped<IProjetRepo, SqlProjetRepo>();
             services.AddScoped<IImpactRepo, SqlImpactRepo>();
             services.AddScoped<IProfilRepo, SqlProfilRepo>();
+            services.AddScoped<IStatistiqueRepo, SqlStatistiqueRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

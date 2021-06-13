@@ -7,6 +7,6 @@ namespace RSEBack.Data{
     public interface IStatistiqueRepo{
         StatistiqueComptage GetStatistiqueComptage();
         StatistiquePourcentageImpact GetStatistiquePourcentageImpact();
-        IEnumerable<StatistiqueContribution> GetStatistiqueContribution();
+        List<StatistiqueContribution> GetStatistiqueContribution();
     }
 }

@@ -37,11 +37,11 @@ namespace RSEBack.data {
             return statistiquePourcentageImpact;
         }
 
-        public IEnumerable<StatistiqueContribution> GetStatistiqueContribution()
+        public List<StatistiqueContribution> GetStatistiqueContribution()
         {
-            IEnumerable<StatistiqueContribution> statistiqueContributions = new List<StatistiqueContribution>();
+            List<StatistiqueContribution> statistiqueContributions = new List<StatistiqueContribution>();
             foreach(Projet projet in _context.Projets){
-                statistiqueContributions.Append(new StatistiqueContribution{
+                statistiqueContributions.Add(new StatistiqueContribution{
                     TitreProjet = projet.Titre,
                     Contribution = projet.Impacts.Count()
                 });
