@@ -14,5 +14,6 @@ namespace RSEBack.Dtos{
         public string Image4 {get; set;}
         public int NombreDeVues {get; set;}
         public DateTime DateCreation {get; set;}
+        public int NombreImpact {get; set;} // champs ajouté non existant dans la base
     }
 }

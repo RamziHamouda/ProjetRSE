@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace RSEBack.Models{
-    public class Projet{
+    public partial class Projet{
         [Key]
         public int Id {get;set;}
         public string Titre {get; set;}

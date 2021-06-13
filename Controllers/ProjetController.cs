@@ -64,22 +64,6 @@ namespace RSEBack.Controllers
             return Ok(_mapper.Map<ProjetReadDto>(ProjetModel));
         }
 
-        // Put api/projet/{idProjet}
-        [HttpPut("{idProjet}")]
-        public ActionResult UpdateAimeProjet(int idProjet, [FromBody]int idUtilisateur){
-            Projet ProjetModel = _repositoryProjet.GetProjetById(idProjet);
-            if(ProjetModel == null){
-                return NotFound();
-            }
-            Utilisateur utilisateur = _repositoryUtilisateur.GetUtilisateurById(idUtilisateur);
-            if(utilisateur == null){
-                return NotFound();
-            }
-            _repositoryProjet.UpdateAimeProjet(ProjetModel, utilisateur);
-            _repositoryProjet.SaveChanges();
-            return Ok(_mapper.Map<ProjetReadDto>(ProjetModel));
-        }
-
         // Put api/projet/vue{idProjet}
         [HttpPut("vue/{idProjet}")]
         public ActionResult UpdateVuesProjet(int idProjet){

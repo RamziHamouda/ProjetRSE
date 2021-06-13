@@ -56,7 +56,7 @@ namespace RSEBack.Controllers
             if(utilisateur == null || projet == null)
                 return NotFound();
             Impact ImpactModel = _mapper.Map<Impact>(ImpactCreateDto);
-            _repositoryImpact.CreateImpact(ImpactModel);
+            _repositoryImpact.CreateImpact(ref ImpactModel);
             _repositoryImpact.SaveChanges();
             ImpactReadDto ImpactReadDto = _mapper.Map<ImpactReadDto>(ImpactModel);
             return CreatedAtRoute(nameof(GetImpactById), new {idImpact = ImpactReadDto.IdImpact}, ImpactReadDto);

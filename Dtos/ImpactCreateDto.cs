@@ -6,8 +6,10 @@ namespace RSEBack.Dtos{
         public float Dons {get; set;}
         [Required]
         public float HeureTravail {get; set;}
-        [Required]
+        [Required(AllowEmptyStrings = true)]
         public string Commentaire {get; set;}
+        [Required]
+        public bool Aime {get; set;}    
         [Required]
         public int IdProjet { get; set; }
         [Required]

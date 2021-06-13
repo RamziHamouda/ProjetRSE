@@ -43,24 +43,6 @@ namespace RSEBack.data {
             Projet.DateCreation = DateTime.Now;
         }
 
-        // Mise à jour du champs 'aime' de la table Projets
-        public void UpdateAimeProjet(Projet projet, Utilisateur utilisateur)
-        {
-            Impact impact = utilisateur.Impacts.Where(I => I.IdProjet == projet.Id).FirstOrDefault();
-            if(impact != null)
-            {
-                impact.Aime = !impact.Aime;  //on l'initialise avec la valeur opposée
-                if(impact.Aime == false && impact.Dons == 0 && impact.HeureTravail == 0)
-                    _context.Impacts.Remove(impact);
-            }
-            else {
-                Impact impact1 = new Impact(){ Aime = true };
-                impact1.IdUtilisateur = utilisateur.Id;
-                impact1.IdProjet = projet.Id;
-                _context.Impacts.Add(impact1);
-            }
-        }
-
         // Ajouter + 1 aux nombres de vues d'un projet
         public void UpdateVuesProjet(Projet projet)
         {
