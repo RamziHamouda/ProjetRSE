@@ -37,7 +37,7 @@ namespace RSEBack.Controllers
 
         // Get api/profil/statistique/idUtilisateur
         [HttpGet("statistique/{idUtilisateur}")]
-        public ActionResult <IEnumerable<ProjetReadDto>> GetStatistiqueProfil(int idUtilisateur)
+        public ActionResult <ProfilStatistique> GetStatistiqueProfil(int idUtilisateur)
         {
             Utilisateur utilisateur = _repositoryUtilisateur.GetUtilisateurById(idUtilisateur);
             if(utilisateur == null)
