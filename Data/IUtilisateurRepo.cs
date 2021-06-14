@@ -6,6 +6,7 @@ namespace RSEBack.Data{
 
         bool SaveChanges();
         IEnumerable<Utilisateur> GetAllUtilisateur();
+        Utilisateur GetUtilisateur(string Email, string Mdp);
         Utilisateur GetUtilisateurById(int id);
         void UpdateUtilisateur(Utilisateur utilisateur);
         IEnumerable<Utilisateur> GetAllUtilisateurEquipeRSE();

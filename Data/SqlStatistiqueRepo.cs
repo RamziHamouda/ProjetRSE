@@ -32,7 +32,7 @@ namespace RSEBack.data {
             int NombreUtilisateurs = _context.Utilisateurs.Count();
             StatistiquePourcentageImpact statistiquePourcentageImpact = new StatistiquePourcentageImpact(){
                 NombreUtilisateurs = NombreUtilisateurs,
-                NombreImpactParUtilisateur = NombreImpact / NombreUtilisateurs
+                NombreImpactParUtilisateur = (float)NombreImpact / (float)NombreUtilisateurs
             };
             return statistiquePourcentageImpact;
         }

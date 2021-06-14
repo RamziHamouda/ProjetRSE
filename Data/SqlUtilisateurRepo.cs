@@ -29,6 +29,10 @@ namespace RSEBack.data {
             return _context.Utilisateurs.ToList(); //liste des employés
         }
 
+        public Utilisateur GetUtilisateur(string Email, string Mdp){
+            return _context.Utilisateurs.FirstOrDefault(u => u.Email.Equals(Email) && u.MotDePasse.Equals(Mdp));
+        }
+
         public IEnumerable<Utilisateur> GetAllUtilisateurEquipeRSE()
         {
             return _context.Utilisateurs.Where(p => p.MembreEquipeRSE == true).ToList(); // Les membres de l'équipe RSE
