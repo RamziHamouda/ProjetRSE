@@ -59,8 +59,8 @@ namespace RSEBack.Controllers
             return Ok(_mapper.Map<UtilisateurReadDto>(UtilisateurModel));
         }
 
-        // GET api/profil/
-        [HttpGet]
+        // GET api/profil/login/
+        [HttpGet("login")]
         public ActionResult GetUtilisateur(UtilisateurMdpReadDto utilisateurMdpReadDto){
             Utilisateur UtilisateurModel = _repositoryUtilisateur.GetUtilisateur(utilisateurMdpReadDto.Email, utilisateurMdpReadDto.MotDePasse);
             if(UtilisateurModel == null){
