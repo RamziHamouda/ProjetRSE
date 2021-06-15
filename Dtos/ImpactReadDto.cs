@@ -8,5 +8,7 @@ namespace RSEBack.Dtos{
         public float HeureTravail {get; set;}
         public bool Aime {get; set;}    
         public string Commentaire {get; set;}    
+        public int IdProjet { get; set; }
+        public int IdUtilisateur { get; set; }
     }
 }

@@ -28,11 +28,11 @@ namespace RSEBack.data {
 
         public StatistiquePourcentageImpact GetStatistiquePourcentageImpact()
         {
-            int NombreImpact = _context.Impacts.Count();
+            int NombreImpactParUtilisateur = _context.Impacts.Select(i => i.IdUtilisateur).Distinct().Count();
             int NombreUtilisateurs = _context.Utilisateurs.Count();
             StatistiquePourcentageImpact statistiquePourcentageImpact = new StatistiquePourcentageImpact(){
-                NombreUtilisateurs = NombreUtilisateurs,
-                NombreImpactParUtilisateur = (float)NombreImpact / (float)NombreUtilisateurs
+                NombreUtilisateurs = NombreUtilisateurs - NombreImpactParUtilisateur,
+                NombreImpactParUtilisateur = NombreImpactParUtilisateur
             };
             return statistiquePourcentageImpact;
         }
