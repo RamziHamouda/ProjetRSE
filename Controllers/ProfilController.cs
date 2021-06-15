@@ -60,7 +60,7 @@ namespace RSEBack.Controllers
         }
 
         // GET api/profil/login/
-        [HttpGet("login")]
+        [HttpPost("login")]
         public ActionResult GetUtilisateur(UtilisateurMdpReadDto utilisateurMdpReadDto){
             Utilisateur UtilisateurModel = _repositoryUtilisateur.GetUtilisateur(utilisateurMdpReadDto.Email, utilisateurMdpReadDto.MotDePasse);
             if(UtilisateurModel == null){
