@@ -29,6 +29,11 @@ namespace RSEBack.data {
             return _context.Projets.FirstOrDefault(p => p.Id == idProjet);
         }
 
+        public IEnumerable<Projet> GetProjetParCategorie(string categorie)
+        {
+            return _context.Projets.Where(p => p.Categorie.Equals(categorie));
+        }
+
         public void CreateProjet(Projet Projet)
         {
             if(Projet == null){

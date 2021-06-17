@@ -32,6 +32,15 @@ namespace RSEBack.Controllers
             var ProjetItems = _repositoryProjet.GetAllProjet();
             return  Ok(_mapper.Map<IEnumerable<ProjetReadDto>>(ProjetItems));
         }
+
+        // Get api/projet/parCategorie/{categorie}
+        [HttpGet("parCategorie/{categorie}")]
+        public ActionResult <IEnumerable<ProjetReadDto>> GetProjetParCategorie(string categorie)
+        {
+            var ProjetItems = _repositoryProjet.GetProjetParCategorie(categorie);
+            return  Ok(_mapper.Map<IEnumerable<ProjetReadDto>>(ProjetItems));
+        }
+
         [HttpGet("{id}", Name ="GetProjetById")]
         public ActionResult <ProjetReadDto> GetProjetById(int id)
         {

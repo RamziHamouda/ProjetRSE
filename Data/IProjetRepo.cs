@@ -7,6 +7,7 @@ namespace RSEBack.Data{
 
         bool SaveChanges();
         IEnumerable<Projet> GetAllProjet();
+        IEnumerable<Projet> GetProjetParCategorie(string categorie);
         Projet GetProjetById(int idProjet);
         void CreateProjet(Projet Projet);
         void UpdateProjet(Projet Projet);

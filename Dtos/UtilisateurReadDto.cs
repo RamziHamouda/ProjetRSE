@@ -12,5 +12,6 @@ namespace RSEBack.Dtos{
         public DateTime DateNaissance {get; set;}
         public string Description {get; set;}
         public bool MembreEquipeRSE {get; set;}
+        public int Role {get; set;}
     }
 }

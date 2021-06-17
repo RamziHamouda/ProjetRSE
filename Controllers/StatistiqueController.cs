@@ -43,5 +43,13 @@ namespace RSEBack.Controllers
             IEnumerable<StatistiqueContribution> statistiqueContributions = _repository.GetStatistiqueContribution();
             return  Ok(statistiqueContributions);
         }
+
+        // GET Api/statistique/categorie
+        [HttpGet("categorie")]
+        public ActionResult <IEnumerable<StatistiqueCategorie>> GetStatistiqueCategorie()
+        {
+            IEnumerable<StatistiqueCategorie> statistiqueCategorie = _repository.GetStatistiqueCategorie();
+            return  Ok(statistiqueCategorie);
+        }
     }
 }

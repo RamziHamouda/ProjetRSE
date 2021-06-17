@@ -8,5 +8,6 @@ namespace RSEBack.Data{
         StatistiqueComptage GetStatistiqueComptage();
         StatistiquePourcentageImpact GetStatistiquePourcentageImpact();
         List<StatistiqueContribution> GetStatistiqueContribution();
+        IEnumerable<StatistiqueCategorie> GetStatistiqueCategorie();
     }
 }
