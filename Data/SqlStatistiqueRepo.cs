@@ -51,21 +51,11 @@ namespace RSEBack.data {
 
         public IEnumerable<StatistiqueCategorie> GetStatistiqueCategorie()
         {
-            List<StatistiqueCategorie> statistiqueCategorie = new List<StatistiqueCategorie>();
-            Dictionary<string, int> ListCategorie = new Dictionary<string, int>();
-            foreach(Projet projet in _context.Projets){
-                if(ListCategorie.Any(l => l.Key == projet.Categorie)){
-                    ListCategorie[projet.Categorie] += 1;
-                }
-                else{
-                    if(!string.IsNullOrEmpty(projet.Categorie)) ListCategorie[projet.Categorie] = 1;
-                }
-            }
-
-            foreach(var couple in ListCategorie){
-                statistiqueCategorie.Add(new StatistiqueCategorie{ Cateogire = couple.Key, nbrProjets = couple.Value});
-            }
-            return statistiqueCategorie;
+            var ListStatistiqueCategorie = _context.Projets.Select(p => p.Categorie).Distinct().Where( p => !string.IsNullOrEmpty(p))
+            .Select(c => new StatistiqueCategorie{ Cateogire = c, nbrProjets = _context.Projets.Where(i => i.Categorie.Equals(c)).Count()})
+            .ToList();
+            
+            return ListStatistiqueCategorie;
         }
     }
 }
