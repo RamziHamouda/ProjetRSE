@@ -29,6 +29,12 @@ namespace RSEBack.data {
             return _context.Partenaires.FirstOrDefault(p => p.Id == id);
         }
 
+        public bool IsExistListePartenaires(List<int> IDPartenaires){
+            if( IDPartenaires.Except(_context.Partenaires.Select(e => e.Id)).Any())
+                return false;
+            return true;
+        }
+
         public void CreatePartenaire(Partenaire Partenaire)
         {
             if(Partenaire == null){

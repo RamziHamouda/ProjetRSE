@@ -16,5 +16,6 @@ namespace RSEBack.data{
         public DbSet<Projet> Projets {get; set;}
         public DbSet<Suggestion> Suggestions {get; set;}
         public DbSet<Utilisateur> Utilisateurs {get; set;}
+        public DbSet<PartenaireProjet> PartenaireProjet {get; set;}
     }
 }

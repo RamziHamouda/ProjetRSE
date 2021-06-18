@@ -10,5 +10,6 @@ namespace RSEBack.Data{
         void CreatePartenaire(Partenaire Partenaire);
         void UpdatePartenaire(Partenaire Partenaire);
         void DeletePartenaire(Partenaire Partenaire);
+        bool IsExistListePartenaires(List<int> IDPartenaires);
     }
 }

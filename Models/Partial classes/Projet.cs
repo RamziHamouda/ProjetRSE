@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace RSEBack.Models{
     public partial class Projet{
@@ -21,6 +22,18 @@ namespace RSEBack.Models{
             }
             set{
                 _NombreImpact = value;
+            }
+        }
+        [NotMapped]
+        private List<int> _Partenaires;
+        [NotMapped]
+        public List<int> Partenaires{
+            get{
+                _Partenaires = this.PartenaireProjet.Select(pp => pp.IdPartenaire).ToList();
+                return _Partenaires;
+            }
+            set{
+                _Partenaires = value;
             }
         }
 

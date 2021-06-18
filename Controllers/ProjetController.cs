@@ -14,14 +14,16 @@ namespace RSEBack.Controllers
     {
         private readonly IProjetRepo _repositoryProjet;
         private readonly IUtilisateurRepo _repositoryUtilisateur;
+        private readonly IPartenaireRepo _repositoryPartenaire;
 
         private readonly IMapper _mapper;
 
         //ctor for dependency injection
-        public ProjetController(IProjetRepo repositoryProjet, IUtilisateurRepo repositoryUtilisateur, IMapper mapper)
+        public ProjetController(IProjetRepo repositoryProjet, IUtilisateurRepo repositoryUtilisateur, IPartenaireRepo repositoryPartenaire, IMapper mapper)
         {
             _repositoryProjet = repositoryProjet;
             _repositoryUtilisateur = repositoryUtilisateur;
+            _repositoryPartenaire = repositoryPartenaire;
             _mapper = mapper;
         }
 
@@ -54,7 +56,10 @@ namespace RSEBack.Controllers
         public ActionResult <Projet> CreateProjet(ProjetCreateDto ProjetCreateDto)
         {
             Projet ProjetModel = _mapper.Map<Projet>(ProjetCreateDto);
-            _repositoryProjet.CreateProjet(ProjetModel);
+            if(! _repositoryPartenaire.IsExistListePartenaires(ProjetCreateDto.Partenaires)){
+                return NotFound();
+            }
+            _repositoryProjet.CreateProjet(ProjetModel, ProjetCreateDto.Partenaires);
             _repositoryProjet.SaveChanges();
             ProjetReadDto ProjetReadDto = _mapper.Map<ProjetReadDto>(ProjetModel);
             return CreatedAtRoute(nameof(GetProjetById), new {id = ProjetReadDto.Id}, ProjetReadDto);
@@ -67,8 +72,11 @@ namespace RSEBack.Controllers
             if(ProjetModel == null){
                 return NotFound();
             }
+            if(! _repositoryPartenaire.IsExistListePartenaires(ProjetUpdateDto.Partenaires)){
+                return NotFound();
+            }
             _mapper.Map(ProjetUpdateDto, ProjetModel); // faire la mise à jour des données automatiquement 
-            _repositoryProjet.UpdateProjet(ProjetModel);
+            _repositoryProjet.UpdateProjet(ProjetModel, ProjetUpdateDto.Partenaires);
             _repositoryProjet.SaveChanges();
             return Ok(_mapper.Map<ProjetReadDto>(ProjetModel));
         }
